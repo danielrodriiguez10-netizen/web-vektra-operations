@@ -3,8 +3,8 @@
 export const site = {
   name: "Vektra Operations",
   url: "https://vektraoperations.com",
-  // PENDIENTE: confirmar que este buzón existe antes de publicar.
-  email: "hola@vektraoperations.com",
+  // Buzón de contacto; también recibe las solicitudes del Mapa.
+  email: "vektraoperations@vektraoperations.com",
   founder: "Daniel Rodriguez",
   tagline: "Tu agenda dental, siempre llena. Sin caos.",
   description:

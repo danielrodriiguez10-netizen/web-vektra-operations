@@ -22,8 +22,9 @@ Datos de negocio (email, precios, plazas al mes) en `src/lib/site.ts`.
 
 ## Envío del formulario
 
-Copia `.env.example` como `.env.local` y rellena las variables. Sin ellas, en local las solicitudes se muestran en la
-consola; en producción el formulario pide al visitante escribir por email.
+Las solicitudes llegan a `vektraoperations@vektraoperations.com`, enviadas por el SMTP de Hostinger. Copia
+`.env.example` como `.env.local` y pon la contraseña del buzón en `SMTP_PASSWORD`. Sin ella, en local las solicitudes
+se muestran en la consola; en producción el formulario pide al visitante escribir por email.
 
 ## Comprobaciones (con `npm run dev -- -p 3100` en marcha)
 

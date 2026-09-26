@@ -40,8 +40,7 @@ export default function PrivacidadPage() {
       <h2>Destinatarios</h2>
       <p>No cedemos datos a terceros salvo obligación legal. Utilizamos estos proveedores como encargados del tratamiento:</p>
       <ul>
-        <li>Alojamiento web: [PENDIENTE, por ejemplo Vercel Inc.].</li>
-        <li>Envío de emails del formulario: [PENDIENTE, por ejemplo Resend].</li>
+        <li>Alojamiento web y correo electrónico: Hostinger International Ltd.</li>
       </ul>
 
       <h2>Tus derechos</h2>

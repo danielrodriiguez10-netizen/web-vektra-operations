@@ -23,5 +23,4 @@ const success = page.getByRole("heading", { name: "Solicitud recibida" });
 await success.waitFor();
 console.log("Tras envío correcto: se muestra", JSON.stringify(await success.innerText()));
 
-await page.screenshot({ path: "form-success.png" });
 await browser.close();

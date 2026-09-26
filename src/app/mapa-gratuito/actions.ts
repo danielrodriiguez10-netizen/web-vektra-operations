@@ -1,5 +1,6 @@
 "use server";
 
+import nodemailer from "nodemailer";
 import { site } from "@/lib/site";
 
 export type MapaFormState = {
@@ -65,16 +66,17 @@ export async function requestMapa(_prev: MapaFormState, formData: FormData): Pro
     values.mensaje || "-",
   ].join("\n");
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.LEADS_TO_EMAIL;
-  const from = process.env.LEADS_FROM_EMAIL;
+  // Envío por el correo de Hostinger. Solo la contraseña es obligatoria; el resto tiene valores por defecto.
+  const password = process.env.SMTP_PASSWORD;
+  const user = process.env.SMTP_USER || site.email;
+  const to = process.env.LEADS_TO_EMAIL || site.email;
 
-  if (!apiKey || !to || !from) {
+  if (!password) {
     if (process.env.NODE_ENV !== "production") {
       console.info(`[mapa-gratuito] Envío de email sin configurar. Solicitud:\n${body}`);
       return successState();
     }
-    console.error("[mapa-gratuito] Faltan RESEND_API_KEY, LEADS_TO_EMAIL o LEADS_FROM_EMAIL.");
+    console.error("[mapa-gratuito] Falta SMTP_PASSWORD.");
     return {
       status: "error",
       message: `No hemos podido enviar la solicitud. Escríbenos a ${site.email} y lo gestionamos por email.`,
@@ -83,18 +85,21 @@ export async function requestMapa(_prev: MapaFormState, formData: FormData): Pro
   }
 
   try {
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        from,
-        to: [to],
-        reply_to: values.email,
-        subject: `Mapa gratuito: ${values.clinica} (${values.ciudad})`,
-        text: body,
-      }),
+    const port = Number(process.env.SMTP_PORT || 465);
+    const transport = nodemailer.createTransport({
+      host: process.env.SMTP_HOST || "smtp.hostinger.com",
+      port,
+      secure: port === 465,
+      auth: { user, pass: password },
     });
-    if (!res.ok) throw new Error(`Resend respondió ${res.status}`);
+    await transport.sendMail({
+      from: { name: "Web Vektra Operations", address: user },
+      to,
+      replyTo: { name: values.nombre, address: values.email },
+      // Sin saltos de línea en el asunto: vienen del formulario.
+      subject: `Mapa gratuito: ${values.clinica} (${values.ciudad})`.replace(/[\r\n]+/g, " "),
+      text: body,
+    });
   } catch (error) {
     console.error("[mapa-gratuito] Error al enviar el email", error);
     return {
