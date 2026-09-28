@@ -176,11 +176,10 @@ export default function Home() {
               Menos sillas vacías en tu clínica dental, sin cargar más trabajo a recepción
             </h1>
             <p className="max-w-xl text-lg sm:text-xl">
-              Confirmamos las citas en riesgo, recuperamos las cancelaciones y activamos tu lista de espera para que un
-              hueco libre no se convierta en producción perdida.
+              Confirmamos citas, recuperamos cancelaciones y llenamos los huecos con tu lista de espera.
             </p>
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <Link href="/mapa-gratuito" className="btn-primary">
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap [&>a]:whitespace-nowrap">
+              <Link href="/mapa-gratuito" className="btn-strong">
                 Descubrir cuánto pierde mi clínica
               </Link>
               <Link href="#como-funciona" className="btn-secondary">

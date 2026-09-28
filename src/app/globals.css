@@ -216,6 +216,15 @@
       translate 0.2s ease;
   }
 
+  /* CTA principal sobre fondo blanco: azul profundo con texto blanco (máximo contraste). */
+  .btn-strong {
+    @apply inline-flex min-h-12 items-center justify-center rounded-md bg-navy px-6 py-3 font-display font-semibold text-white shadow-[0_10px_24px_-14px_rgba(15,44,74,0.8)] hover:bg-navy-deep hover:shadow-[0_12px_28px_-10px_rgba(46,204,113,0.55)] motion-safe:hover:-translate-y-px motion-safe:active:translate-y-0;
+    transition:
+      background-color 0.2s ease,
+      box-shadow 0.25s ease,
+      translate 0.2s ease;
+  }
+
   .btn-secondary {
     @apply inline-flex min-h-12 items-center justify-center rounded-md border-2 border-navy px-6 py-3 font-display font-semibold text-navy hover:bg-navy hover:text-white hover:shadow-[0_10px_24px_-12px_rgba(15,44,74,0.55)] motion-safe:hover:-translate-y-px motion-safe:active:translate-y-0;
     transition:
