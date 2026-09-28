@@ -154,7 +154,7 @@ export function MapaForm() {
         <FieldError id="privacidad-error" message={e.privacidad} />
       </div>
 
-      <button type="submit" disabled={pending} className="btn-primary w-full disabled:opacity-60 sm:w-auto">
+      <button type="submit" disabled={pending} className="btn-strong w-full disabled:opacity-60 sm:w-auto">
         {pending ? "Enviando solicitud…" : "Pedir mi Mapa gratis"}
       </button>
     </form>

@@ -461,7 +461,7 @@ export default function Home() {
             </h2>
             <p className="text-lg">Gratis, con tus datos reales y en 48 horas.</p>
           </div>
-          <Link href="/mapa-gratuito" className="btn-primary shrink-0">
+          <Link href="/mapa-gratuito" className="btn-strong shrink-0">
             Pedir mi Mapa gratis
           </Link>
         </div>

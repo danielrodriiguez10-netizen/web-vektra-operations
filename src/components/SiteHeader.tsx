@@ -27,9 +27,8 @@ export function SiteHeader() {
           </ul>
         </nav>
 
-        <Link href="/mapa-gratuito" className="btn-primary min-h-11 px-4 py-2 text-sm sm:px-5">
-          <span className="sm:hidden">Mapa gratis</span>
-          <span className="hidden sm:inline">Pedir mi Mapa gratis</span>
+        <Link href="/mapa-gratuito" className="btn-strong min-h-11 whitespace-nowrap px-4 py-2 text-sm sm:px-5">
+          Diagnóstico gratis
         </Link>
       </div>
     </header>
