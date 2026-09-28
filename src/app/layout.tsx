@@ -1,21 +1,24 @@
 import type { Metadata } from "next";
-import { Open_Sans, Poppins } from "next/font/google";
+import localFont from "next/font/local";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { RevealObserver } from "@/components/RevealObserver";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const poppins = Poppins({
+// Fuentes incluidas en el proyecto (src/fonts, licencia OFL): la compilación no depende de Google Fonts.
+const poppins = localFont({
   variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  src: [
+    { path: "../fonts/poppins-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/poppins-latin-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "../fonts/poppins-latin-700-normal.woff2", weight: "700", style: "normal" },
+  ],
 });
 
-const openSans = Open_Sans({
+const openSans = localFont({
   variable: "--font-open-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  src: [{ path: "../fonts/open-sans-latin-wght-normal.woff2", weight: "300 800", style: "normal" }],
 });
 
 export const metadata: Metadata = {
